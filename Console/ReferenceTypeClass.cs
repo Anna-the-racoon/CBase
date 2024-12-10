@@ -26,6 +26,9 @@ internal class ReferenceTypeClass
         p1.X = 15;   //поэтому при изменении значения у нас элемент не поменялся
         System.Console.WriteLine(p1.X);
         System.Console.WriteLine(p3.X);
+
+        Point pN = null; //NullReferenceException в процессе выполнения
+
         System.Console.ReadLine();*/
 
     public class Point { public int X, Y; };

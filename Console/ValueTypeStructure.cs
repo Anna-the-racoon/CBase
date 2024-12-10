@@ -16,7 +16,9 @@ internal class ValueTypeStructure
     Console.WriteLine(p1.X);
     Console.WriteLine(p2.X);
 
-    Console.ReadLine();
+    Point pN = null;    //ошибка на этапе компиляции
 
-    public struct Point { public int X, Y; }*/
+    Console.ReadLine();*/
+
+    public struct Point { public int X, Y; }
 }
