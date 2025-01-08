@@ -48,4 +48,11 @@ internal class ClassMethods
 
         int Cube(int value)=> value*value*value;    //область видимости ограничивается конкретным методом
     }
+
+
+    //Перегрузки методов
+    void Overload(int x) { }
+    void Overload(ref int x) { }    //приемлемо
+    //void Overload(out int x) { }    //неприемлемо из-за наличия перегрузки с ref. Ошибка на этапе компиляции
+
 }
