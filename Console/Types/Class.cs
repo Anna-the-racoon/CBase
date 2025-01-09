@@ -1,4 +1,6 @@
-﻿namespace Console.Types;
+﻿using System.ComponentModel;
+
+namespace Console.Types;
 
 /// <summary>
 /// Разбор полей и свойств
@@ -124,7 +126,7 @@ internal class ClassCtor
 }
 
 /// <summary>
-///  Первичные конструкторы. Позволяют добавлять параметры к определению метода и использовать внутри класса
+/// Первичные конструкторы. Позволяют добавлять параметры к определению метода и использовать внутри класса
 /// </summary>
 internal class ClassPrimaryCtor(decimal price, int year)    //При такой записи конструктор создасться автоматически
 {
@@ -141,5 +143,23 @@ internal class ClassPrimaryCtor(decimal price, int year)    //При такой 
     {
         var result = price;
         return result;
+    }
+}
+
+/// <summary>
+/// О статических классах и их конструкторах
+/// </summary>
+internal static class ClassStatic
+{
+    //на вход не получает параметров
+    static ClassStatic() { }
+
+    //может содержать только статические поля, свойста и методы
+    private static decimal price;
+    public static int Year { get; set; }
+
+    public static string Message(string message = "Тебе было лень придумать текст для метода?")
+    {
+        return message;
     }
 }
