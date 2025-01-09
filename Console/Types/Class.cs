@@ -163,3 +163,23 @@ internal static class ClassStatic
         return message;
     }
 }
+
+/// <summary>
+/// Про финализаторы
+/// </summary>
+internal class Finalize
+{
+    public Finalize() { }
+
+    //финализатор класса. Происходит переопределение метода Finalize класса Object
+    ~Finalize()
+    {
+        //some code
+        System.Console.WriteLine("Finalize");
+    }
+
+    //альтернативный вариант
+    //~Finalize() => System.Console.WriteLine("Finalize");
+
+    //В классе может быть только один
+}
