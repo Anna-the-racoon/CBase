@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace Console.Types;
+﻿namespace Console.Types;
 
 /// <summary>
 /// Разбор полей и свойств
@@ -128,8 +126,20 @@ internal class ClassCtor
 /// <summary>
 ///  Первичные конструкторы. Позволяют добавлять параметры к определению метода и использовать внутри класса
 /// </summary>
-internal class ClassPrimaryCtor(decimal price, int year)
+internal class ClassPrimaryCtor(decimal price, int year)    //При такой записи конструктор создасться автоматически
 {
-    public ClassPrimaryCtor(decimal price) : this(price, DateTime.Now.Year) {}
-}
+    private readonly decimal price;      //допустимо. называется маскированием, рекомендуется делать readonly для избежания редактирования параметров
 
+    public ClassPrimaryCtor(decimal price) : this(price, DateTime.Now.Year) {}  //можно сказать, я создала перегрузку
+
+    //примеры объявления класса:
+    //var wine = new ClassPrimaryCtor(15);
+    //var wine2 = new ClassPrimaryCtor(10, 2023);
+
+    //внутри типа мы можем обращаться с параметрами первичного конструктора, в отличае от обычных кострукторов 
+    public decimal ReturnPrice()
+    {
+        var result = price;
+        return result;
+    }
+}

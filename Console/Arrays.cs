@@ -36,5 +36,5 @@ internal class Arrays
 
     System.Console.ReadLine();*/
     public struct Point { public int X, Y; }      //отрабатывает заполняя значения по умолчанию
-                                                  //public class Point { public int X, Y; }     //падает с ошибкой на этапе выполнения. Нужно явное создание экземпляров класса
+    //public class Point { public int X, Y; }     //падает с ошибкой на этапе выполнения. Нужно явное создание экземпляров класса
 }
