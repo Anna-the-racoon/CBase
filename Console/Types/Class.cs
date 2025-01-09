@@ -167,12 +167,12 @@ internal static class ClassStatic
 /// <summary>
 /// Про финализаторы
 /// </summary>
-internal class Finalize
+internal class ClassFinalize
 {
-    public Finalize() { }
+    //public Finalize() { }
 
     //финализатор класса. Происходит переопределение метода Finalize класса Object
-    ~Finalize()
+    ~ClassFinalize()
     {
         //some code
         System.Console.WriteLine("Finalize");
