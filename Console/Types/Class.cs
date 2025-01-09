@@ -69,9 +69,14 @@ internal class ClassMethods
 /// </summary>
 internal class ClassCtor
 {
+    //поля
     public decimal Price;
     public int Year;
 
+    //свойства
+    public string Name { get; set; }
+
+    //конструкторы
     public ClassCtor(decimal price)=> Price=price;  //в конструкторе могут быть объявлены необходимые переменные
     public ClassCtor(decimal price, int year) : this(price) => Year = year; //перегрузка конструктора. Перегруженный конструктор ссылается на другой
 
@@ -99,3 +104,4 @@ internal class ClassPrimaryCtor(decimal price, int year)
 {
     public ClassPrimaryCtor(decimal price) : this(price, DateTime.Now.Year) {}
 }
+
