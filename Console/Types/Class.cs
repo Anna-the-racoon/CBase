@@ -3,12 +3,15 @@
 namespace Console.Types;
 
 /// <summary>
-/// Разбор полей
+/// Разбор полей и свойств
 /// </summary>
-internal static class ClassField
+internal class ClassFieldAndProperty
 {
     //Именование обычного поля
-    public static string Name { get; set; }
+    public string name;
+    public decimal price;
+    public int year;
+
 
     //Вариант именования нескольких однотипных методов
     static readonly int legs = 8,
@@ -27,11 +30,26 @@ internal static class ClassField
     public readonly static DateTime day = DateTime.Now;
 
 
-    public readonly static DateTime today;  //объявление в конструкторе класса
-    static ClassField()
+    public static readonly DateTime today;  //объявление в конструкторе класса
+    static ClassFieldAndProperty()
     {
         today = DateTime.Today;
     }
+
+
+
+    //автоматическое свойство
+    public string Name { get; set; }
+    //свойство со строковым объявлением 
+    public decimal WDecimal => price * year;
+    //свойство
+    public decimal CurrentPrice
+    {
+        get { return price; }
+        set { price = value; }
+    }
+    //свойство с инициализатором 
+
 }
 
 /// <summary>
@@ -65,30 +83,27 @@ internal class ClassMethods
 }
 
 /// <summary>
-/// Немного о констукторах
+/// Немного о констукторах, деконструкторах
 /// </summary>
 internal class ClassCtor
 {
     //поля
-    public decimal Price;
-    public int Year;
-
-    //свойства
-    public string Name { get; set; }
+    public decimal price;
+    public int year;
 
     //конструкторы
-    public ClassCtor(decimal price)=> Price=price;  //в конструкторе могут быть объявлены необходимые переменные
-    public ClassCtor(decimal price, int year) : this(price) => Year = year; //перегрузка конструктора. Перегруженный конструктор ссылается на другой
+    public ClassCtor(decimal price)=> this.price=price;  //в конструкторе могут быть объявлены необходимые переменные
+    public ClassCtor(decimal price, int year) : this(price) => this.year = year; //перегрузка конструктора. Перегруженный конструктор ссылается на другой
 
-    public ClassCtor(int year) => Year = year;
+    public ClassCtor(int year) => this.year = year;
 
     //public ClassCtor(decimal price, int year) : this(year) => Price = price;    //ссылка сразу на 2 более просытвх конструктора невозможна
 
     //деструкторы присваивают поля набору переменных 
     public void Deconstruct(out decimal price, out int year)
     {
-        price = Price;
-        year = Year;
+        price = this.price;
+        year = this.year;
     }
     //пример вызова. Вставить в Main
     //var wine = new ClassCtor(15, 2024);
