@@ -1,10 +1,13 @@
 ﻿using System.Text;
+using Console.Types;
 
 class Program
 {
     public static void Main()
     {
-
+        var wine = new ClassCtor(15, 2024);
+        var (price, year) = wine;   //вызов деконструктора
+        System.Console.WriteLine($"{wine.Price} = {wine.Year}");
 
         System.Console.ReadLine();
     }

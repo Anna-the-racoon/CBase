@@ -1,5 +1,10 @@
-﻿namespace Console.Types;
+﻿using Microsoft.VisualBasic;
 
+namespace Console.Types;
+
+/// <summary>
+/// Разбор полей
+/// </summary>
 internal static class ClassField
 {
     //Именование обычного поля
@@ -29,6 +34,9 @@ internal static class ClassField
     }
 }
 
+/// <summary>
+/// Рзбор методов
+/// </summary>
 internal class ClassMethods
 {
     /// <summary>
@@ -49,10 +57,45 @@ internal class ClassMethods
         int Cube(int value)=> value*value*value;    //область видимости ограничивается конкретным методом
     }
 
-
     //Перегрузки методов
     void Overload(int x) { }
     void Overload(ref int x) { }    //приемлемо
     //void Overload(out int x) { }    //неприемлемо из-за наличия перегрузки с ref. Ошибка на этапе компиляции
 
+}
+
+/// <summary>
+/// Немного о констукторах
+/// </summary>
+internal class ClassCtor
+{
+    public decimal Price;
+    public int Year;
+
+    public ClassCtor(decimal price)=> Price=price;  //в конструкторе могут быть объявлены необходимые переменные
+    public ClassCtor(decimal price, int year) : this(price) => Year = year; //перегрузка конструктора. Перегруженный конструктор ссылается на другой
+
+    public ClassCtor(int year) => Year = year;
+
+    //public ClassCtor(decimal price, int year) : this(year) => Price = price;    //ссылка сразу на 2 более просытвх конструктора невозможна
+
+    //деструкторы присваивают поля набору переменных 
+    public void Deconstruct(out decimal price, out int year)
+    {
+        price = Price;
+        year = Year;
+    }
+    //пример вызова. Вставить в Main
+    //var wine = new ClassCtor(15, 2024);
+    //var(price, year) = wine;   //вызов деконструктора
+    //System.Console.WriteLine($"{wine.Price} = {wine.Year}");
+
+}
+
+/// <summary>
+///  Первичные конструкторы. Позволяют добавлять параметры к определению метода и использовать внутри класса
+/// </summary>
+internal class ClassPrimaryCtor(decimal price, int year)
+{
+    public ClassPrimaryCtor(decimal price) : this(price, DateTime.Now.Year) {}
 }
