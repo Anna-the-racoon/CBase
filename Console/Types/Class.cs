@@ -40,16 +40,29 @@ internal class ClassFieldAndProperty
 
     //автоматическое свойство
     public string Name { get; set; }
+
     //свойство со строковым объявлением 
     public decimal WDecimal => price * year;
+
     //свойство
     public decimal CurrentPrice
     {
         get { return price; }
         set { price = value; }
     }
-    //свойство с инициализатором 
 
+    //свойство с инициализатором 
+    public string MyName { get; set; } = "Anna";
+
+    //init - средство доступа для инициализации
+    public int Height { get; init; } = 178; //далее значение не может быть изменено. Инициализация допустима так же через конструктор или средство доступа для инициализации
+
+    //только для чтения
+    public int Weight { get;}   //инициализация только через конструктор
+    public ClassFieldAndProperty(int weight = 62)
+    {
+        Weight = weight;
+    }
 }
 
 /// <summary>
