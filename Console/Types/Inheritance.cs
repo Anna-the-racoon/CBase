@@ -5,6 +5,7 @@ public class Asset
     public string Name { get; set; }
     public virtual decimal Liability => 0;
     public int Counter { get; set; }
+    public virtual decimal NetValue => 1;
 
 }
 
@@ -14,6 +15,9 @@ public class Stock : Asset
 
     public int Counter { get; set; }    //ругается, но дает создать аналог родительского свойства
 
+    public sealed override decimal Liability { get; }   //переопределили и запретили для изменения наследниками данного класса
+
+    public override decimal NetValue => base.NetValue + Counter;    //base позволяет получить доступ к свойству родительского класса невиртуальным способом
 }
 
 public class House : Asset
