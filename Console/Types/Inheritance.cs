@@ -1,4 +1,8 @@
-﻿namespace Console.Types;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
+
+namespace Console.Types;
+
 
 public class Asset
 {
@@ -6,6 +10,9 @@ public class Asset
     public virtual decimal Liability => 0;
     public int Counter { get; set; }
     public virtual decimal NetValue => 1;
+
+    private string PrivateString { get; set; }  //недоступно наследникам
+    protected string ProtectedString { get; set; }  //доступно наследникам и только им
 
 }
 
@@ -20,7 +27,8 @@ public class Stock : Asset
     public override decimal NetValue => base.NetValue + Counter;    //base позволяет получить доступ к свойству родительского класса невиртуальным способом
 }
 
-public class House : Asset
+[assembly: InternalsVisibleTo("ConsoleOld")]    //объявляем имя дружествнной сборки для доступа к нному классу
+internal class House : Asset
 {
     public decimal Mortgage;
     public override decimal Liability => Mortgage;      //переопределение вертуального родительского свойства
@@ -31,8 +39,17 @@ public class House : Asset
 
         var liab = stock.Liability; //вызов вертуального не переопределенного свойства, то есть вернет 0
         var name = stock.Name;
+
+        //var privStr = PrivateString;  //Ошибка
+        var privStr = ProtectedString;  //Доступно
+
     }
 
     public new int Counter { get; set; }    //корректная форма переопределения родительского свойства. Тут new язвляется молификатором членов
 
+}
+
+file class Warehouse : Stock   //виден только в рамках данного класса, в остальном без изменений
+{
+    //чаще всего примеяется при автогенерации классов
 }
