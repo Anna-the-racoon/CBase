@@ -1,12 +1,12 @@
 ﻿using System.Text;
 using System.Threading.Channels;
+using Console;
 using Console.Types;
 
 class Program
 {
     public static void Main()
     {
-
 
         System.Console.ReadLine();
     }
@@ -29,4 +29,17 @@ class Program
     //    var result = a + b + c + d;
 
     //}
+
+    #region Сравнение GetType и typeof
+
+    //ReferenceTypeClass.Point p = new();
+
+    //System.Console.WriteLine(p.GetType().Name);
+    //System.Console.WriteLine(typeof(ReferenceTypeClass.Point).Name);
+    //System.Console.WriteLine(p.GetType() == typeof(ReferenceTypeClass.Point));
+    //System.Console.WriteLine(p.X.GetType().Name);
+    //System.Console.WriteLine(p.Y.GetType().FullName);
+
+    #endregion
+
 }
