@@ -13,6 +13,10 @@ internal class Objects
 
         long z = (long)(int)obj;   //через двойное преобразование так же корректно. Сначала распаковка к действительному типу, потом преобразование к желаемому
         System.Console.WriteLine(z);
+
+        object a = "5"; //будет считаться строкой из-за статической проверки компилятора
+        int b = (int) a;    //Invalid Cast Exception
+        string c = (string)a;   //корректно 
     }
 
     public void Boxing()
