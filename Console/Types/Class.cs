@@ -183,3 +183,9 @@ internal class ClassFinalize
 
     //В классе может быть только один
 }
+
+internal class Panda
+{
+    public string Name { get; set; }
+    public override string ToString() => Name;  //для переопределения методов Object не нужно указывать наследование. Допустимо переиспользовать базовые реализации для дополнения своих
+}
