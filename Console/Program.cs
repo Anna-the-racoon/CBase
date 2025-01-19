@@ -1,9 +1,4 @@
-﻿using System.Text;
-using System.Threading.Channels;
-using Console;
-using Console.Types;
-
-class Program
+﻿class Program
 {
     public static void Main()
     {
